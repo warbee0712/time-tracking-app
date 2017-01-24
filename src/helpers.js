@@ -11,14 +11,14 @@ const newTimer = (attrs = {}) => {
   return timer
 }
 
-const findById = (array, id, cb) => {
-  array.forEach((el) => {
-    if (el.id === id) {
-      cb(el)
-      return
-    }
-  })
-}
+// const findById = (array, id, cb) => {
+//   array.forEach((el) => {
+//     if (el.id === id) {
+//       cb(el)
+//       return
+//     }
+//   })
+// }
 
 const pad = (numberString, size) => {
   let padded = numberString

@@ -9,6 +9,7 @@ const EditableTimerList = props => (
         key={timer.id}
         {...timer}
         onFormSubmit={props.onFormSubmit}
+        onTrashClick={props.onTrashClick}
       />
     ))}
   </div>

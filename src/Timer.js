@@ -28,6 +28,7 @@ const Timer = props => {
             <Icon
               name='trash'
               style={{ cursor: 'pointer' }}
+              onClick={() => props.onTrashClick(props.id)}
             />
           </span>
         </Card.Content>
@@ -35,7 +36,6 @@ const Timer = props => {
       <Button attached='bottom' color='blue' basic>
         Start
       </Button>
-
     </Card>
   )
 }
