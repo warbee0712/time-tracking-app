@@ -18,10 +18,17 @@ const Timer = props => {
         </Card.Description>
         <Card.Content extra>
           <span className="right floated">
-            <Icon name='edit' />
+            <Icon
+              name='edit'
+              onClick={props.onEditClick}
+              style={{ cursor: 'pointer' }}
+            />
           </span>
           <span className="right floated">
-            <Icon name='trash' />
+            <Icon
+              name='trash'
+              style={{ cursor: 'pointer' }}
+            />
           </span>
         </Card.Content>
       </Card.Content>
