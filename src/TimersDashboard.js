@@ -54,6 +54,38 @@ class TimerDashboard extends React.Component {
       timers: this.state.timers.filter(t => t.id !== timerId)
     })
   }
+  startTimer (timerId) {
+    const now = Date.now()
+
+    this.setState({
+      timers: this.state.timers.map(timer => {
+        if (timer.id === timerId) {
+          return Object.assign({}, timer, {
+            runningSince: now
+          })
+        } else {
+          return timer
+        }
+      })
+    })
+  }
+  stopTimer (timerId) {
+    const now = Date.now()
+
+    this.setState({
+      timers: this.state.timers.map(timer => {
+        if (timer.id === timerId) {
+          const lastElapsed = now-timer.runningSince
+          return Object.assign({}, timer, {
+            elapsed: timer.elapsed + lastElapsed,
+            runningSince: null
+          })
+        } else {
+          return timer
+        }
+      })
+    })
+  }
   render () {
     return (
       <Grid columns='3' centered>
@@ -62,6 +94,8 @@ class TimerDashboard extends React.Component {
             timers={this.state.timers}
             onFormSubmit={attrs => this.updateTimer(attrs)}
             onTrashClick={timerId => this.deleteTimer(timerId)}
+            onStartClick={timerId => this.startTimer(timerId)}
+            onStopClick={timerId => this.stopTimer(timerId)}
           />
           <ToggleableTimerForm
             onFormSubmit={timer => this.createTimer(timer)}

@@ -2,13 +2,7 @@ import React from 'react'
 import { Card, Form, Button } from 'semantic-ui-react'
 
 class TimerForm extends React.Component {
-  constructor () {
-    super()
-
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  handleSubmit (e) {
-    e.preventDefault()
+  handleSubmit () {
     this.props.onFormSubmit({
       id: this.props.id,
       title: this.refs.title.value,
@@ -30,8 +24,8 @@ class TimerForm extends React.Component {
               <input type='text' ref='project' defaultValue={this.props.project}/>
             </Form.Field>
             <Button.Group attached='bottom'>
-              <Button as='button' basic color='blue' onClick={this.handleSubmit}>{ submitText }</Button>
-              <Button as='button' basic color='red' onClick={this.props.onFormClose}>Cancel</Button>
+              <Button as='div' basic color='blue' onClick={this.handleSubmit.bind(this)}>{ submitText }</Button>
+              <Button as='div' basic color='red' onClick={this.props.onFormClose}>Cancel</Button>
             </Button.Group>
           </Form>
         </Card.Content>
