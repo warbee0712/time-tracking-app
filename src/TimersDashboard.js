@@ -88,8 +88,8 @@ class TimerDashboard extends React.Component {
   }
   render () {
     return (
-      <Grid columns='3' centered>
-        <Grid.Column>
+      <Grid centered>
+        <Grid.Column mobile={16} tablet={8} computer={4}>
           <EditableTimerList
             timers={this.state.timers}
             onFormSubmit={attrs => this.updateTimer(attrs)}
