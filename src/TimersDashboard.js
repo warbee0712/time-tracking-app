@@ -4,6 +4,7 @@ import uuid from 'uuid'
 
 import EditableTimerList from './EditableTimerList'
 import ToggleableTimerForm from './ToggleableTimerForm'
+import { newTimer } from './helpers'
 
 class TimerDashboard extends React.Component {
   constructor () {
@@ -27,6 +28,18 @@ class TimerDashboard extends React.Component {
         }
       ]
     }
+
+    this.createTimer = this.createTimer.bind(this)
+    this.handleCreateFormSubmit = this.handleCreateFormSubmit.bind(this)
+  }
+  createTimer (timer) {
+    const t = newTimer(timer)
+    this.setState({
+      timers: this.state.timers.concat(t)
+    })
+  }
+  handleCreateFormSubmit (timer) {
+    this.createTimer(timer)
   }
   render () {
     return (
@@ -36,7 +49,7 @@ class TimerDashboard extends React.Component {
             timers={this.state.timers}
           />
           <ToggleableTimerForm
-            isOpen={true}
+            onFormSubmit={this.handleCreateFormSubmit.bind(this)}
           />
         </Grid.Column>
       </Grid>
